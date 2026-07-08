@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "COTTONTAiL-extension",
+  "version": "1.0.0",
+  "description": "A companion extension for COTTONTAiL.",
+
+  "permissions": ["storage", "activeTab", "cookies"],
+
+  "host_permissions": [
+    "https://drunkenslug.com/*",
+    "http://localhost:*/*",
+    "http://127.0.0.1:*/*",
+    "https://*.onrender.com/*"
+  ],
+
+  "icons": {
+    "16":  "icons/icon16.png",
+    "48":  "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "COTTONTAiL-extension",
+    "default_icon": {
+      "16":  "icons/icon16.png",
+      "48":  "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "http://localhost:*/*",
+        "http://127.0.0.1:*/*",
+        "https://*.onrender.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

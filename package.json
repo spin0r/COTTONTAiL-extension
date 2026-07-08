@@ -1,0 +1,15 @@
+{
+  "name": "cottontail-extension",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "postbuild": "node -e \"const fs=require('fs');fs.copyFileSync('manifest.json','dist/manifest.json')\"",
+    "dev":   "vite build --watch",
+    "build": "vite build && npm run postbuild"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.295",
+    "typescript": "^5.4.5",
+    "vite": "^5.3.1"
+  }
+}
