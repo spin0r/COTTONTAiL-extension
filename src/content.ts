@@ -94,13 +94,13 @@ function injectRow(tr: HTMLTableRowElement): void {
   const actionsCell = tr.querySelector<HTMLElement>(".cell-actions");
   if (!actionsCell) return;
 
-  const entry = extractEntry(tr);
-  if (!entry) return;
-
+  // Don't pre-capture entry — read it fresh on every click so renames are reflected
   const btn = makeSearchBtn();
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
     e.preventDefault();
+    const entry = extractEntry(tr);
+    if (!entry) return;
     handleClick(entry, btn);
   });
   actionsCell.appendChild(btn);
