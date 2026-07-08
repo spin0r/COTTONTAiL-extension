@@ -363,7 +363,7 @@ async function doSave(): Promise<void> {
 
   saveBtn.disabled = true;
   saveBtn.textContent = "Saving…";
-  showStatus("Downloading and saving thumbnail…", "loading");
+  showStatus("Saving thumbnail URL\u2026", "loading");
 
   const req: SaveThumbMsg = {
     type: "SAVE_THUMB",
