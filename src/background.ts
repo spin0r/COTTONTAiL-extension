@@ -160,8 +160,12 @@ chrome.runtime.onMessage.addListener(
         // Also persist so popup can read it after service worker wakes up
         void chrome.storage.session.set({ pendingEntry: message.entry });
         sendResponse({ ok: true });
-        // Context is saved — user clicks the extension icon to open the popup.
-        // (chrome.action.openPopup() is unreliable and requires the "action" permission)
+        // Try to open the popup automatically; works in Chrome 127+ with the
+        // "action" permission. Silently ignored if called outside a user gesture.
+        void chrome.action.openPopup().catch(() => {
+          // Browser may reject if not triggered by a direct user gesture —
+          // user can still click the extension icon manually; context is saved.
+        });
         return false;
       }
 

@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "A companion extension for COTTONTAiL.",
 
-  "permissions": ["storage", "activeTab", "cookies"],
+  "permissions": ["storage", "activeTab", "cookies", "action"],
 
   "host_permissions": [
     "https://drunkenslug.com/*",
